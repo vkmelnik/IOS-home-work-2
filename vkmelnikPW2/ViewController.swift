@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     private let locationTextView = UITextView()
     private let locationManager = CLLocationManager()
     private let locationToggle = UISwitch()
+    public var locationOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,16 +133,28 @@ class ViewController: UIViewController {
         )
     }
     
+    private var buttonCount = 0
     @objc
     private func settingsButtonPressed() {
-        UIView.animate(withDuration: 0.1, animations: {
-            self.settingsView.alpha = 1 - self.settingsView.alpha
-        })
+        switch buttonCount {
+        case 0, 1:
+            UIView.animate(withDuration: 0.1, animations: {
+                self.settingsView.alpha = 1 - self.settingsView.alpha
+            })
+        case 2:
+            self.navigationController?.pushViewController(SettingsViewController(of: self), animated: true)
+            buttonCount = -1
+        default:
+            // Is never reached.
+            buttonCount = -1
+        }
+        buttonCount += 1
     }
     
     @objc
     func locationToggleSwitched(_ sender: UISwitch) {
         if sender.isOn {
+            locationOn = true
             if CLLocationManager.locationServicesEnabled() {
                 locationManager.delegate = self
                 locationManager.desiredAccuracy =
@@ -151,8 +164,18 @@ class ViewController: UIViewController {
                 sender.setOn(false, animated: true)
             }
         } else {
+            locationOn = false
             locationTextView.text = ""
             locationManager.stopUpdatingLocation()
+        }
+        toggleIfNeeded()
+    }
+    
+    private func toggleIfNeeded() {
+        if (locationOn) {
+            locationToggle.isOn = true
+        } else {
+            locationToggle.isOn = false
         }
     }
 }
