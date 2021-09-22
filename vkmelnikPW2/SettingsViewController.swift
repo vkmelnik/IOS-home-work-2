@@ -35,7 +35,7 @@ final class SettingsViewController: UIViewController {
         locationLabel.text = "Location"
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         locationLabel.topAnchor.constraint(
-            equalTo: view.topAnchor,
+            equalTo: view.safeAreaLayoutGuide.topAnchor,
             constant: 55
         ).isActive = true
         locationLabel.leadingAnchor.constraint(
@@ -56,7 +56,7 @@ final class SettingsViewController: UIViewController {
         
         locationToggle.translatesAutoresizingMaskIntoConstraints = false
         locationToggle.topAnchor.constraint(
-            equalTo: view.topAnchor,
+            equalTo: view.safeAreaLayoutGuide.topAnchor,
             constant: 50
         ).isActive = true
         locationToggle.trailingAnchor.constraint(
