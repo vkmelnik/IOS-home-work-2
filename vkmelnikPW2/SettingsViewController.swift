@@ -31,7 +31,7 @@ final class SettingsViewController: UIViewController {
         
         view.addSubview(settingsView)
         settingsView.axis = .vertical
-        settingsView.pinTop(to: view)
+        settingsView.pinTop(to: view.safeAreaLayoutGuide.topAnchor)
         settingsView.pinLeft(to: view)
         settingsView.pinRight(to: view)
     }
@@ -82,6 +82,7 @@ final class SettingsViewController: UIViewController {
     
     @objc
     private func closeScreen() {
+        _ = navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
 }

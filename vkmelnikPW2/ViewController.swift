@@ -108,11 +108,9 @@ class ViewController: UIViewController {
                 self.setView.alpha = 1 - self.setView.alpha
             })
         case 2:
-            let view = SettingsViewController(of: self)
-            self.present(view, animated: true, completion: nil)
-            buttonCount = -1
+            self.navigationController?.pushViewController(SettingsViewController(of: self), animated: true)
         default:
-            // Is never reached.
+            self.present(SettingsViewController(of: self), animated: true, completion: nil)
             buttonCount = -1
         }
         buttonCount += 1
