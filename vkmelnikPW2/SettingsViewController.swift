@@ -8,13 +8,15 @@
 import UIKit
 
 final class SettingsViewController: UIViewController {
+    private weak var presenter: MainPresenter!
     private var locationToggle: LocationToggle!
     private weak var mainView: ViewController!
     private let settingsView = UIStackView()
     
-    convenience init(of: ViewController) {
+    convenience init(of: ViewController, presenter: MainPresenter) {
         self.init(nibName: nil, bundle: nil)
         mainView = of
+        self.presenter = presenter
     }
     
     override func viewDidLoad() {
@@ -37,8 +39,7 @@ final class SettingsViewController: UIViewController {
     }
     
     private func setupLocationToggle() {
-        
-        locationToggle = LocationToggle(frame: .null, object: self, action: #selector(locationToggleSwitched), isOn: mainView.locationOn)
+        locationToggle = LocationToggle(frame: .null, object: presenter, action: #selector(presenter.locationToggleSwitched), isOn: presenter.locationOn)
         settingsView.addArrangedSubview(locationToggle)
     }
     
@@ -57,17 +58,18 @@ final class SettingsViewController: UIViewController {
         }
     }
     
+    // TODO - update this method for VIPER.
     @objc
     func sliderChangedValue() {
-        mainView.sliders[0].value = sliders[0].value
-        mainView.sliders[1].value = sliders[1].value
-        mainView.sliders[2].value = sliders[2].value
-        mainView.sliderChangedValue()
+        for i in 0...2 {
+            mainView.sliders[i].value = sliders[i].value
+        }
+        presenter.sliderChangedValue()
     }
     
     @objc
     func locationToggleSwitched(_ sender: UISwitch) {
-        mainView.locationToggleSwitched(sender)
+        presenter.locationToggleSwitched(sender)
     }
     
     private func setupCloseButton() {
