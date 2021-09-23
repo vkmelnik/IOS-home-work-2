@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		127216DF26FC8BE3009F31B4 /* UIView_Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127216DE26FC8BE3009F31B4 /* UIView_Pin.swift */; };
 		12CF6C2526FA3B810096339C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CF6C2426FA3B810096339C /* SettingsViewController.swift */; };
 		12D2170E26FA2637001ED357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2170D26FA2637001ED357 /* AppDelegate.swift */; };
 		12D2171026FA2637001ED357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2170F26FA2637001ED357 /* SceneDelegate.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		127216DE26FC8BE3009F31B4 /* UIView_Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView_Pin.swift; path = ../../../../Downloads/UIView_Pin.swift; sourceTree = "<group>"; };
 		12CF6C2426FA3B810096339C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		12D2170A26FA2637001ED357 /* vkmelnikPW2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vkmelnikPW2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D2170D26FA2637001ED357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				12D2170F26FA2637001ED357 /* SceneDelegate.swift */,
 				12D2171126FA2637001ED357 /* ViewController.swift */,
 				12CF6C2426FA3B810096339C /* SettingsViewController.swift */,
+				127216DE26FC8BE3009F31B4 /* UIView_Pin.swift */,
 				12D2171626FA263B001ED357 /* Assets.xcassets */,
 				12D2171826FA263B001ED357 /* LaunchScreen.storyboard */,
 				12D2171B26FA263B001ED357 /* Info.plist */,
@@ -140,6 +143,7 @@
 				12D2171226FA2637001ED357 /* ViewController.swift in Sources */,
 				12D2170E26FA2637001ED357 /* AppDelegate.swift in Sources */,
 				12D2171026FA2637001ED357 /* SceneDelegate.swift in Sources */,
+				127216DF26FC8BE3009F31B4 /* UIView_Pin.swift in Sources */,
 				12CF6C2526FA3B810096339C /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

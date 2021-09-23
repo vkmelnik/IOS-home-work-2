@@ -33,19 +33,9 @@ final class SettingsViewController: UIViewController {
         let locationLabel = UILabel()
         view.addSubview(locationLabel)
         locationLabel.text = "Location"
-        locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        locationLabel.topAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.topAnchor,
-            constant: 55
-        ).isActive = true
-        locationLabel.leadingAnchor.constraint(
-            equalTo: view.leadingAnchor,
-            constant: 10
-        ).isActive = true
-        locationLabel.trailingAnchor.constraint(
-            equalTo: view.trailingAnchor,
-            constant: -10
-        ).isActive = true
+        locationLabel.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 55)
+        locationLabel.pinLeft(to: view, 10)
+        locationLabel.pinRight(to: view, 10)
     }
     
     private func setupLocationToggle() {
@@ -54,15 +44,8 @@ final class SettingsViewController: UIViewController {
             locationToggle.isOn = true
         }
         
-        locationToggle.translatesAutoresizingMaskIntoConstraints = false
-        locationToggle.topAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.topAnchor,
-            constant: 50
-        ).isActive = true
-        locationToggle.trailingAnchor.constraint(
-            equalTo: view.trailingAnchor,
-            constant: -10
-        ).isActive = true
+        locationToggle.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 50)
+        locationToggle.pinRight(to: view, 10)
         locationToggle.addTarget(
             self,
             action: #selector(locationToggleSwitched),
@@ -78,18 +61,10 @@ final class SettingsViewController: UIViewController {
     private func setupCloseButton() {
         let button = UIButton(type: .close)
         view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.trailingAnchor.constraint(
-            equalTo: view.trailingAnchor,
-            constant: -10
-        ).isActive = true
-        button.topAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.topAnchor,
-            constant: 10
-        ).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button.widthAnchor.constraint(equalTo:
-        button.heightAnchor).isActive = true
+        button.pinRight(to: view, 10)
+        button.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 10)
+        button.setHeight(to: 30)
+        button.pinWidth(to: button.heightAnchor)
         button.addTarget(self, action: #selector(closeScreen), for: .touchUpInside)
     }
     
