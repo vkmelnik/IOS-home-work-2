@@ -43,7 +43,7 @@ class LabeledSlider: UIView {
     private func setupSlider() {
         self.addSubview(label)
         label.pinTop(to: self, 5)
-        label.pinLeft(to: self)
+        label.pinLeft(to: self, 10)
         label.setWidth(to: 50)
         
         slider.translatesAutoresizingMaskIntoConstraints = false
@@ -54,6 +54,6 @@ class LabeledSlider: UIView {
         slider.pinTop(to: self, 5)
         slider.setHeight(to: 20)
         slider.pinLeft(to: label.trailingAnchor, 10)
-        slider.pinRight(to: self)
+        slider.pinRight(to: self, 10)
     }
 }

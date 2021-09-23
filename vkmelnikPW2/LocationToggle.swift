@@ -40,12 +40,14 @@ class LocationToggle : UIView {
         locationLabel.pinRight(to: self, 10)
         
         self.addSubview(locationToggle)
-        locationToggle.pinTop(to: self)
-        locationToggle.pinRight(to: self, 10)
+        locationToggle.pinTop(to: locationLabel.bottomAnchor)
+        locationToggle.pinLeft(to: self, 10)
         locationToggle.addTarget(
             actionObject,
             action: selector,
             for: .valueChanged
         )
+        
+        self.setHeight(to: 60)
     }
 }

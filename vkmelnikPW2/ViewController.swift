@@ -9,7 +9,8 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController {
-    private let settingsView = UIView()
+    private let setView = UIView()
+    private let settingsView = UIStackView()
     private let locationTextView = UITextView()
     private let locationManager = CLLocationManager()
     private var locationToggle: LocationToggle!
@@ -22,8 +23,8 @@ class ViewController: UIViewController {
         setupLocationTextView()
         setupSettingsView()
         setupSettingsButton()
-        setupSliders()
         setupLocationToggle()
+        setupSliders()
         
         locationManager.requestWhenInUseAuthorization()
     }
@@ -49,14 +50,20 @@ class ViewController: UIViewController {
     }
     
     private func setupSettingsView() {
-        view.addSubview(settingsView)
-        settingsView.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 10)
-        settingsView.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, 10)
-        settingsView.setHeight(to: 300)
-        settingsView.setWidth(to: 200)
+        setView.backgroundColor = .systemGray4
+        setView.alpha = 0
+        setView.layer.cornerRadius = 10
+        view.addSubview(setView)
+        setView.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 10)
+        setView.pinRight(to: view.safeAreaLayoutGuide.trailingAnchor, 10)
+        setView.setHeight(to: 300)
+        setView.pinWidth(to: setView.heightAnchor, 2/3)
         
-        settingsView.backgroundColor = .white
-        settingsView.alpha = 0
+        setView.addSubview(settingsView)
+        settingsView.axis = .vertical
+        settingsView.pinTop(to: setView)
+        settingsView.pinLeft(to: setView)
+        settingsView.pinRight(to: setView)
     }
 
     private func setupLocationTextView() {
@@ -75,11 +82,7 @@ class ViewController: UIViewController {
     
     private func setupLocationToggle() {
         locationToggle = LocationToggle(frame: .null, object: self, action: #selector(locationToggleSwitched), isOn: false)
-        settingsView.addSubview(locationToggle)
-        locationToggle.pinTop(to: settingsView, 50)
-        locationToggle.pinRight(to: settingsView)
-        locationToggle.pinLeft(to: settingsView)
-        locationToggle.setHeight(to: 50)
+        settingsView.addArrangedSubview(locationToggle)
     }
     
     private var buttonCount = 0
@@ -88,7 +91,7 @@ class ViewController: UIViewController {
         switch buttonCount {
         case 0, 1:
             UIView.animate(withDuration: 0.1, animations: {
-                self.settingsView.alpha = 1 - self.settingsView.alpha
+                self.setView.alpha = 1 - self.setView.alpha
             })
         case 2:
             let view = SettingsViewController(of: self)
@@ -130,24 +133,21 @@ class ViewController: UIViewController {
     }
     
     // Sliders
-    private var sliders = [LabeledSlider(), LabeledSlider(), LabeledSlider()]
+    public var sliders = [LabeledSlider(), LabeledSlider(), LabeledSlider()]
     private let colors = ["Red", "Green", "Blue"]
     private func setupSliders() {
         var top = 80
         for i in 0..<sliders.count {
             let labeledSlider = LabeledSlider(frame: .null, title: colors[i], object: self, action: #selector(sliderChangedValue))
             sliders[i] = labeledSlider
-            settingsView.addSubview(labeledSlider)
-            labeledSlider.pinLeft(to: settingsView, 10)
-            labeledSlider.pinRight(to: settingsView, 10)
-            labeledSlider.pinTop(to: settingsView, CGFloat(top))
+            settingsView.addArrangedSubview(labeledSlider)
             labeledSlider.setHeight(to: 30)
             
             top += 40
         }
     }
     
-    @objc private func sliderChangedValue() {
+    @objc public func sliderChangedValue() {
         let red: CGFloat = CGFloat(sliders[0].value)
         let green: CGFloat = CGFloat(sliders[1].value)
         let blue: CGFloat = CGFloat(sliders[2].value)
