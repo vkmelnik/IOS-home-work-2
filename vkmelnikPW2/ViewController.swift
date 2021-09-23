@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import AVFoundation
 
 class ViewController: UIViewController {
     private let setView = UIView()
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setupAudioPlayer()
         setupLocationTextView()
         setupSettingsView()
         setupSettingsButton()
@@ -31,6 +33,17 @@ class ViewController: UIViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    var audioPlayer = AVAudioPlayer()
+    private func setupAudioPlayer() {
+        let sound = Bundle.main.path(forResource: "EmergencyMeeting", ofType: "mp3")
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+        } catch {
+            print(error)
+        }
     }
     
     private func setupSettingsButton() {
@@ -88,6 +101,7 @@ class ViewController: UIViewController {
     private var buttonCount = 0
     @objc
     private func settingsButtonPressed() {
+        audioPlayer.play()
         switch buttonCount {
         case 0, 1:
             UIView.animate(withDuration: 0.1, animations: {

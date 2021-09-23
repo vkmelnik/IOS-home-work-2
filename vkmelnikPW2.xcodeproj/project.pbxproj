@@ -10,6 +10,8 @@
 		127216DF26FC8BE3009F31B4 /* UIView_Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127216DE26FC8BE3009F31B4 /* UIView_Pin.swift */; };
 		127216E126FC9055009F31B4 /* LabeledSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127216E026FC9055009F31B4 /* LabeledSlider.swift */; };
 		127216E326FC974A009F31B4 /* LocationToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127216E226FC974A009F31B4 /* LocationToggle.swift */; };
+		127216E626FCA633009F31B4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127216E526FCA633009F31B4 /* AVFoundation.framework */; };
+		127216E826FCA66C009F31B4 /* EmergencyMeeting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 127216E726FCA66C009F31B4 /* EmergencyMeeting.mp3 */; };
 		12CF6C2526FA3B810096339C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CF6C2426FA3B810096339C /* SettingsViewController.swift */; };
 		12D2170E26FA2637001ED357 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2170D26FA2637001ED357 /* AppDelegate.swift */; };
 		12D2171026FA2637001ED357 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2170F26FA2637001ED357 /* SceneDelegate.swift */; };
@@ -22,6 +24,8 @@
 		127216DE26FC8BE3009F31B4 /* UIView_Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView_Pin.swift; path = ../../../../Downloads/UIView_Pin.swift; sourceTree = "<group>"; };
 		127216E026FC9055009F31B4 /* LabeledSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledSlider.swift; sourceTree = "<group>"; };
 		127216E226FC974A009F31B4 /* LocationToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationToggle.swift; sourceTree = "<group>"; };
+		127216E526FCA633009F31B4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		127216E726FCA66C009F31B4 /* EmergencyMeeting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = EmergencyMeeting.mp3; path = ../../../../Downloads/EmergencyMeeting.mp3; sourceTree = "<group>"; };
 		12CF6C2426FA3B810096339C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		12D2170A26FA2637001ED357 /* vkmelnikPW2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vkmelnikPW2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D2170D26FA2637001ED357 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,17 +41,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				127216E626FCA633009F31B4 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		127216E426FCA632009F31B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				127216E526FCA633009F31B4 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		12D2170126FA2637001ED357 = {
 			isa = PBXGroup;
 			children = (
 				12D2170C26FA2637001ED357 /* vkmelnikPW2 */,
 				12D2170B26FA2637001ED357 /* Products */,
+				127216E426FCA632009F31B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +83,7 @@
 				127216E026FC9055009F31B4 /* LabeledSlider.swift */,
 				127216E226FC974A009F31B4 /* LocationToggle.swift */,
 				127216DE26FC8BE3009F31B4 /* UIView_Pin.swift */,
+				127216E726FCA66C009F31B4 /* EmergencyMeeting.mp3 */,
 				12D2171626FA263B001ED357 /* Assets.xcassets */,
 				12D2171826FA263B001ED357 /* LaunchScreen.storyboard */,
 				12D2171B26FA263B001ED357 /* Info.plist */,
@@ -136,6 +151,7 @@
 			files = (
 				12D2171A26FA263B001ED357 /* LaunchScreen.storyboard in Resources */,
 				12D2171726FA263B001ED357 /* Assets.xcassets in Resources */,
+				127216E826FCA66C009F31B4 /* EmergencyMeeting.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
