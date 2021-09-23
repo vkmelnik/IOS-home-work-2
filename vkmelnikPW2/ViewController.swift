@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     private let settingsView = UIView()
     private let locationTextView = UITextView()
     private let locationManager = CLLocationManager()
-    private let locationToggle = UISwitch()
+    private var locationToggle: LocationToggle!
     public var locationOn = false
     
     override func viewDidLoad() {
@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         setupSettingsButton()
         setupSliders()
         setupLocationToggle()
-        setupLocationManager()
         
         locationManager.requestWhenInUseAuthorization()
     }
@@ -47,15 +46,6 @@ class ViewController: UIViewController {
         
         settingsButton.addTarget(self, action: #selector(settingsButtonPressed),
                                  for: .touchUpInside)
-    }
-    
-    private func setupLocationManager() {
-        let locationLabel = UILabel()
-        settingsView.addSubview(locationLabel)
-        locationLabel.text = "Location"
-        locationLabel.pinTop(to: settingsView, 55)
-        locationLabel.pinLeft(to: settingsView, 10)
-        locationLabel.pinRight(to: settingsView, 10)
     }
     
     private func setupSettingsView() {
@@ -84,15 +74,12 @@ class ViewController: UIViewController {
     }
     
     private func setupLocationToggle() {
+        locationToggle = LocationToggle(frame: .null, object: self, action: #selector(locationToggleSwitched), isOn: false)
         settingsView.addSubview(locationToggle)
         locationToggle.pinTop(to: settingsView, 50)
-        locationToggle.pinRight(to: settingsView, 10)
-
-        locationToggle.addTarget(
-            self,
-            action: #selector(locationToggleSwitched),
-            for: .valueChanged
-        )
+        locationToggle.pinRight(to: settingsView)
+        locationToggle.pinLeft(to: settingsView)
+        locationToggle.setHeight(to: 50)
     }
     
     private var buttonCount = 0
@@ -143,37 +130,20 @@ class ViewController: UIViewController {
     }
     
     // Sliders
-    private let sliders = [UISlider(), UISlider(), UISlider()]
+    private var sliders = [LabeledSlider(), LabeledSlider(), LabeledSlider()]
     private let colors = ["Red", "Green", "Blue"]
     private func setupSliders() {
         var top = 80
         for i in 0..<sliders.count {
-            let view = UIView()
-            settingsView.addSubview(view)
-            view.pinLeft(to: settingsView, 10)
-            view.pinRight(to: settingsView, 10)
-            view.pinTop(to: settingsView, CGFloat(top))
-            view.setHeight(to: 30)
+            let labeledSlider = LabeledSlider(frame: .null, title: colors[i], object: self, action: #selector(sliderChangedValue))
+            sliders[i] = labeledSlider
+            settingsView.addSubview(labeledSlider)
+            labeledSlider.pinLeft(to: settingsView, 10)
+            labeledSlider.pinRight(to: settingsView, 10)
+            labeledSlider.pinTop(to: settingsView, CGFloat(top))
+            labeledSlider.setHeight(to: 30)
             
             top += 40
-            
-            let label = UILabel()
-            view.addSubview(label)
-            label.text = colors[i]
-            label.pinTop(to: view, 5)
-            label.pinLeft(to: view)
-            label.setWidth(to: 50)
-            
-            let slider = sliders[i]
-            slider.translatesAutoresizingMaskIntoConstraints = false
-            slider.minimumValue = 0
-            slider.maximumValue = 1
-            slider.addTarget(self, action: #selector(sliderChangedValue), for: .valueChanged)
-            view.addSubview(slider)
-            slider.pinTop(to: view, 5)
-            slider.setHeight(to: 20)
-            slider.pinLeft(to: label.trailingAnchor, 10)
-            slider.pinRight(to: view)
         }
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 final class SettingsViewController: UIViewController {
-    private let locationToggle = UISwitch()
+    private var locationToggle: LocationToggle!
     private weak var mainView: ViewController!
     
     convenience init(of: ViewController) {
@@ -21,7 +21,6 @@ final class SettingsViewController: UIViewController {
         
         setupSettingsView()
         setupLocationToggle()
-        setupLocationManager()
         setupCloseButton()
     }
     
@@ -29,28 +28,14 @@ final class SettingsViewController: UIViewController {
         view.backgroundColor = .white
     }
     
-    private func setupLocationManager() {
-        let locationLabel = UILabel()
-        view.addSubview(locationLabel)
-        locationLabel.text = "Location"
-        locationLabel.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 55)
-        locationLabel.pinLeft(to: view, 10)
-        locationLabel.pinRight(to: view, 10)
-    }
-    
     private func setupLocationToggle() {
-        view.addSubview(locationToggle)
-        if (mainView.locationOn) {
-            locationToggle.isOn = true
-        }
         
+        locationToggle = LocationToggle(frame: .null, object: self, action: #selector(locationToggleSwitched), isOn: mainView.locationOn)
+        view.addSubview(locationToggle)
         locationToggle.pinTop(to: view.safeAreaLayoutGuide.topAnchor, 50)
-        locationToggle.pinRight(to: view, 10)
-        locationToggle.addTarget(
-            self,
-            action: #selector(locationToggleSwitched),
-            for: .valueChanged
-        )
+        locationToggle.pinRight(to: view)
+        locationToggle.pinLeft(to: view)
+        locationToggle.setHeight(to: 50)
     }
     
     @objc
