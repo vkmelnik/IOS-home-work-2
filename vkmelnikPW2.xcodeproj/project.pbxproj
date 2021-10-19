@@ -138,16 +138,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					12D2170926FA2637001ED357 = {
-						CreatedOnToolsVersion = 13.0;
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
 			buildConfigurationList = 12D2170526FA2637001ED357 /* Build configuration list for PBXProject "vkmelnikPW2" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
